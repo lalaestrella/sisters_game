@@ -774,7 +774,7 @@ MarieTheEvent = Marie("Путешественница Мари",
 class LittleMoney(RandomEvent):
     def action(self, player):
         player.money += 10
-        logs.print("Вы забрали себе 10 монет. Всего монет: "
+        logs.print("Вы получили 10 монет. Всего монет: "
                    + str(player.money) + "\n")
 
 
@@ -930,11 +930,48 @@ AndrewTheEvent = Andrew("Артефактор Эндрю",
                         "Вы получили подарок от светлого мага Эндрю.",
                         "Получите артефакт из запасов игры.")
 
+
+class AlsoLittleMoney(RandomEvent):
+    def action(self, player):
+        player.money += 3
+        logs.print("Вы получили 3 монет. Всего монет: "
+                   + str(player.money) + "\n")
+
+
+AlsoLittleMoneyTheEvent = AlsoLittleMoney("Потерянный кошелёк",
+                                          "Вы нашли чей-то кошелёк.",
+                                          "Получите 3 монет.")
+
+
+class AnotherLittleMoney(RandomEvent):
+    def action(self, player):
+        player.money += 5
+        logs.print("Вы получили 5 монет. Всего монет: "
+                   + str(player.money) + "\n")
+
+
+AnotherLittleMoneyTheEvent = AnotherLittleMoney("Потерянный кошелёк",
+                                                "Вы нашли чей-то кошелёк.",
+                                                "Получите 5 монет.")
+
+
+class AnotherOneLittleMoney(RandomEvent):
+    def action(self, player):
+        player.money += 2
+        logs.print("Вы получили 2 монеты. Всего монет: "
+                   + str(player.money) + "\n")
+
+
+AnotherOneLittleMoneyTheEvent = AnotherOneLittleMoney("Потерянный кошелёк",
+                                                      "Вы нашли чей-то кошелёк.",
+                                                      "Получите 2 монеты.")
+
+
 allRandomEvents = [HeraldTheEvent, EvilWitchTheEvent, AlexTheEvent, JamesTheEvent, MargaretTheEvent,
                    EndOfTheRainbowTheEvent, DonReggianiTheEvent, InquisitorGottliebTheEvent, GoodWitchTheEvent,
                    VictoriaTheEvent, MarieTheEvent, LittleMoneyTheEvent, GuildLeaderTheEvent, AliceTheEvent,
-                   BasilioTheEvent, GodDreamingTheEvent, EpidemicTheEvent,
-                   HungerTheEvent, LucyTheEvent, AndrewTheEvent]
+                   BasilioTheEvent, GodDreamingTheEvent, EpidemicTheEvent, HungerTheEvent, LucyTheEvent,
+                   AndrewTheEvent, AlsoLittleMoneyTheEvent, AnotherLittleMoneyTheEvent, AnotherOneLittleMoney]
 
 
 # ФУНКЦИЯ ДЛЯ РАНДОМА: СРАЖЕНИЕ С НПС
