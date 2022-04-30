@@ -25,8 +25,11 @@ python main.py
 - доберитесь до папки sisters_game из распакованного архива
     
     пример:
+    
     C:
+    
     cd games
+    
     cd sisters_game
     
     этот набор команд приведёт вас в директорию C:\games\sisters_game
