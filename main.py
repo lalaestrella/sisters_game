@@ -1,7 +1,7 @@
 from initGameObjects import VictorThePlayer, JulianThePlayer, GuildThePlayer, QueenThePlayer, ChaosThePlayer, \
     WarTheSister
 from gameplayFunctions import currentWinner, buyInfluence, buyWeapon, sellSomething, buyArtefact, inviteToSisterFight, \
-    inviteToFight, intelligence, randomCard, chaosCardPlay
+    inviteToFight, intelligence, randomCard, chaosCardPlay, stealACard
 from writelogs import logs
 from time import gmtime, strftime
 import shutil
@@ -66,6 +66,8 @@ while True:
             logs.print("Первый этап хода окончен. ===\n")
 
             logs.print("=== Второй этап хода: Торговля.\n")
+            if Player == GuildThePlayer:
+                stealACard(Player)
             if Player.isQueen() and Player.isKidnapped:
                 logs.print("Вас похитили, вы не можете торговать.\n")
             else:
@@ -96,7 +98,7 @@ while True:
                 # здесь рандом
                 randomCard(Player)
                 if Player.isKidnapped:
-                    logs.print("Случайное событие не помогло, вы всё похищены.\n")
+                    logs.print("Случайное событие не помогло, вы всё ещё похищены.\n")
                     while True:
                         logs.print("Желаете отдать все свои локации, чтобы освободиться?\n"
                                    "Введите ответ: 1 - да, 0 - нет.")

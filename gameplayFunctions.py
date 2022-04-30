@@ -33,6 +33,20 @@ def currentWinner():
     return 0
 
 
+# ФУНКЦИИ ГЕЙМПЛЕЯ - ПЕРВЫЙ ЭТАП ХОДА. ГИЛЬДИЯ ВОРУЕТ
+
+def stealACard(player):
+    victimPlayer = random.choice([VictorThePlayer, JulianThePlayer, QueenThePlayer, ChaosThePlayer])
+    cardsToSteal = []
+    for card in victimPlayer.cards:
+        if card.isArtefact() or card.isWeapon():
+            cardsToSteal.append(card)
+    stolenCard = random.choice(cardsToSteal)
+    player.getCard(stolenCard, victimPlayer)
+    card.makePrivate()
+    logs.print(
+        "Карта " + stolenCard.name + " украдена Гильдией. Предыдущий владелец: " + victimPlayer.name + ".\n")
+
 # ФУНКЦИИ ГЕЙМПЛЕЯ - ВТОРОЙ ЭТАП ХОДА
 
 def sellSomething(player):
