@@ -22,7 +22,7 @@ python main.py
 - Сначала зайдите в нужный диск, это просто: введите C: или E: или какой у вас там диск
 - Дальше пишете cd <имя директории>, например: cd games
 - Поздравляю, вы попали в C:\games
-- доберитесь до папки sisters_game из распакованного архива
+- доберитесь до папки sisters_game-master из распакованного архива
     
     пример:
     
@@ -30,9 +30,9 @@ python main.py
     
     cd games
     
-    cd sisters_game
+    cd sisters_game-master
     
-    этот набор команд приведёт вас в директорию C:\games\sisters_game
+    этот набор команд приведёт вас в директорию C:\games\sisters_game-master
     
 7. Введите команду:
    python main.py
