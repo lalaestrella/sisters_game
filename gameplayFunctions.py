@@ -680,7 +680,11 @@ def randomCard(player):
         # выводим список для выбора
         for tempCard in cardsToShow:
             logs.print("СОБЫТИЕ №" + str(cardsToShow.index(tempCard) + 1))
-            tempCard.writeInfo()
+            try:
+                tempCard.writeInfo()
+            except Exception:
+                logs.print("БАГ!!! Произошла проблема с картой: " + tempCard.name)
+                logs.print("Пожалуйста, не выбирайте её.")
             logs.print("")
 
         while True:
@@ -698,9 +702,12 @@ def randomCard(player):
         randomEvent = random.choice(allRandomEvents)
 
     print("Случайное событие!\n")
-    randomEvent.writeInfo()
-    print("")
-    randomEvent.action(player)
+    try:
+        randomEvent.writeInfo()
+        print("")
+        randomEvent.action(player)
+    except Exception:
+        logs.print("БАГ!!! Произошла проблема с картой: " + randomEvent.name)
     print("Случайное событие завершено.\n")
 
 

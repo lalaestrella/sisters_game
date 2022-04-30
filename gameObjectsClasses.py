@@ -110,6 +110,9 @@ class Player:
     def isVictor(self):
         return False
 
+    def isPlayable(self):
+        return True
+
     def isHavingCard(self, card):
         return card in self.cards
 
@@ -123,13 +126,18 @@ class Player:
     def loseInfluence(self, influenceLost, influenceGetter):
         if self.influenceToSold() >= influenceLost:
             self.influence -= influenceLost
-            influenceGetter.influence += influenceLost
+            if influenceGetter.isPlayable():  # если получатель свободного влияния - игрок, то он всё получает
+                influenceGetter.influence += influenceLost
+                logs.print("Новое количество влияния " + influenceGetter.name + ": " + str(influenceGetter.influence)
+                           + ", из них свободно " + str(influenceGetter.influenceToSold()))
+            # если не игрок, то это Хаос, и он не должен получать влияние
             logs.print("Новое количество влияния " + self.name + ": " + str(self.influence) + ", из них свободно "
                        + str(self.influenceToSold()))
-            logs.print("Новое количество влияния " + influenceGetter.name + ": " + str(influenceGetter.influence)
-                       + ", из них свободно " + str(influenceGetter.influenceToSold()))
+
         else:  # придётся продавать здания
-            influenceGetter.influence += self.influenceToSold()
+            if influenceGetter.isPlayable():  # если получатель свободного влияния - игрок, то он всё получает
+                influenceGetter.influence += self.influenceToSold()
+            # если не игрок, то это Хаос, и он не должен получать свободное влияние
             influenceToLose = influenceLost - self.influenceToSold()  # сколько нам останется добрать
             isDebtPaid = False
             self.influence -= self.influenceToSold()
@@ -237,6 +245,8 @@ class Player:
 
     def amIWinnerOfTheFightWithNpc(self, weapon, sister, enemyStats, enemyName):
         logs.print("Финальные статы " + enemyName)
+        if self.isVictor():
+            enemyStats.magic = 0
         enemyStats.writeStats()
         myStats = FightStats(self.fightStats.force + weapon.fightStats.force + sister.fightStats.force,
                              self.fightStats.magic + weapon.fightStats.magic + sister.fightStats.magic,
@@ -284,6 +294,11 @@ class Queen(Player):
         return FightStats(enemy.fightStats.force + weapon.fightStats.force,
                           enemy.fightStats.magic + weapon.fightStats.magic,
                           enemy.fightStats.mind + weapon.fightStats.mind)
+
+
+class Chaos(Player):
+    def isPlayable(self):
+        return False
 
 
 # КАРТЫ НА РУКАХ
@@ -407,6 +422,7 @@ class Artefact(Card):
 
     def isArtefact(self):
         return True
+
 
 # СТАТЫ
 

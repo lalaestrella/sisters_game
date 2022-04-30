@@ -100,14 +100,11 @@ while True:
                 if Player.isKidnapped:
                     logs.print("Случайное событие не помогло, вы всё ещё похищены.\n")
                     while True:
-                        logs.print("Желаете отдать все свои локации, чтобы освободиться?\n"
+                        logs.print("Желаете отдать треть своих очков влияния, чтобы освободиться?\n"
                                    "Введите ответ: 1 - да, 0 - нет.")
                         answer = logs.input()
                         if answer == "1":
-                            for card in Player.cards:
-                                if card.isLocation():
-                                    ChaosThePlayer.getCard(card, QueenThePlayer)
-                                    logs.print("Королева потеряла локацию " + card.name)
+                            QueenThePlayer.loseInfluence(int(QueenThePlayer.influence/3), ChaosThePlayer)
                             Player.getTheCardFromAnyPlayer(WarTheSister, Players)
                             logs.print("\nКоролева оcвободилась благодаря Хаосу.\n")
                             break

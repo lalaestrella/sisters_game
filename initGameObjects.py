@@ -1,7 +1,7 @@
 import random
 
 from gameObjectsClasses import Artefact, FightStats, SisterCard, Player, Victor, LocationCard, Queen, Weapon, \
-    RandomEvent
+    RandomEvent, Chaos
 from writelogs import logs
 
 # ОБЪЯВЛЕНИЕ КОМПАСА, СЕСТЁР, СТАРТОВЫХ ЛОКАЦИЙ И ИГРОКОВ
@@ -559,26 +559,26 @@ EmptySister = SisterCard(name="Без сестры", description="Этот пе�
 EmptyWeapon = Weapon(name="Без оружия", description="Этот персонаж сражается без оружия.",
                      fightStats=FightStats(0, 0, 0), cost=0)
 
-ChaosThePlayer = Player(name="ПЕРВОЗДАННЫЙ ХАОС",
-                        influence=22,
-                        money=0,
-                        cards=[PlagueTheSister,  # Чума
-                               GloveTheCard, EyeTheCard, FieryCloakTheCard, WikiTheCard, FairyDustTheCard,  # артефакты
-                               RingTheCard,
-                               WeaponShopTheCard, HospitalTheCard, BankTheCard, ChurchTheCard,  # локации
-                               BarracksTheCard, UniversityTheCard, PictureGalleryTheCard, FarmTheCard,
-                               LittleAxeTheCard, ScytheOfDeathTheCard, BigAxeTheCard, ThiefKnifeTheCard,  # оружие
-                               MagicWandTheCard, CrownOfMadnessTheCard, CookieTheCard, HorseShoeTheCard,
-                               CharmedKnifeTheCard, LuckyAceTheCard, RunesBookTheCard, SmartRatTheCard,
-                               StupidTranslatorTheCard, CourtSwordTheCard, PortraitOfHeleneTheCard,
-                               MagicianHandkerchiefTheCard, HobnailTheCard, IceSwordTheCard, SwordTheCard,
-                               DruidStaffTheCard, DoctorsCloakTheCard, HowToMeetDevilTheCard, BibleTheCard,
-                               MasterKeyTheCard],
-                        fightStats=FightStats(force=7, magic=7, mind=7),  # все статы - от артефактов
-                        havingSisters=1,
-                        goal="Набрать 30 очков влияния ИЛИ и у Гильдии, и у Королевы 30 очков влияния\n"
-                             "ИЛИ Королева собрала 4 сестры ИЛИ Гильдия собрала 4 сестры.",
-                        specialTraits="Неигровой персонаж, способный, однако, победить в игре.")
+ChaosThePlayer = Chaos(name="ПЕРВОЗДАННЫЙ ХАОС",
+                       influence=22,
+                       money=0,
+                       cards=[PlagueTheSister,  # Чума
+                              GloveTheCard, EyeTheCard, FieryCloakTheCard, WikiTheCard, FairyDustTheCard,  # артефакты
+                              RingTheCard,
+                              WeaponShopTheCard, HospitalTheCard, BankTheCard, ChurchTheCard,  # локации
+                              BarracksTheCard, UniversityTheCard, PictureGalleryTheCard, FarmTheCard,
+                              LittleAxeTheCard, ScytheOfDeathTheCard, BigAxeTheCard, ThiefKnifeTheCard,  # оружие
+                              MagicWandTheCard, CrownOfMadnessTheCard, CookieTheCard, HorseShoeTheCard,
+                              CharmedKnifeTheCard, LuckyAceTheCard, RunesBookTheCard, SmartRatTheCard,
+                              StupidTranslatorTheCard, CourtSwordTheCard, PortraitOfHeleneTheCard,
+                              MagicianHandkerchiefTheCard, HobnailTheCard, IceSwordTheCard, SwordTheCard,
+                              DruidStaffTheCard, DoctorsCloakTheCard, HowToMeetDevilTheCard, BibleTheCard,
+                              MasterKeyTheCard],
+                       fightStats=FightStats(force=7, magic=7, mind=7),  # все статы - от артефактов
+                       havingSisters=1,
+                       goal="Набрать 30 очков влияния ИЛИ и у Гильдии, и у Королевы 30 очков влияния\n"
+                            "ИЛИ Королева собрала 4 сестры ИЛИ Гильдия собрала 4 сестры.",
+                       specialTraits="Неигровой персонаж, способный, однако, победить в игре.")
 
 
 # ОБЪЯВЛЕНИЕ КАРТ РАНДОМА
@@ -966,7 +966,6 @@ class AnotherOneLittleMoney(RandomEvent):
 AnotherOneLittleMoneyTheEvent = AnotherOneLittleMoney("Потерянный кошелёк",
                                                       "Вы нашли чей-то кошелёк.",
                                                       "Получите 2 монеты.")
-
 
 allRandomEvents = [HeraldTheEvent, EvilWitchTheEvent, AlexTheEvent, JamesTheEvent, MargaretTheEvent,
                    EndOfTheRainbowTheEvent, DonReggianiTheEvent, InquisitorGottliebTheEvent, GoodWitchTheEvent,
