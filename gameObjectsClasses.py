@@ -245,9 +245,10 @@ class Player:
 
     def amIWinnerOfTheFightWithNpc(self, weapon, sister, enemyStats, enemyName):
         logs.print("Финальные статы " + enemyName)
+        tempEnemyStats = FightStats(enemyStats.force, enemyStats.magic, enemyStats.mind)
         if self.isVictor():
-            enemyStats.magic = 0
-        enemyStats.writeStats()
+            tempEnemyStats.magic = 0
+        tempEnemyStats.writeStats()
         myStats = FightStats(self.fightStats.force + weapon.fightStats.force + sister.fightStats.force,
                              self.fightStats.magic + weapon.fightStats.magic + sister.fightStats.magic,
                              self.fightStats.mind + weapon.fightStats.mind + sister.fightStats.mind)
