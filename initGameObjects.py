@@ -779,8 +779,8 @@ class LittleMoney(RandomEvent):
                    + str(player.money) + "\n")
 
 
-LittleMoneyTheEvent = LittleMoney("Потерянный кошелёк",
-                                  "Вы нашли чей-то кошелёк.",
+LittleMoneyTheEvent = LittleMoney("Потерянный кошель",
+                                  "Вы нашли чей-то кошель.",
                                   "Получите 10 монет.")
 
 
@@ -939,8 +939,8 @@ class AlsoLittleMoney(RandomEvent):
                    + str(player.money) + "\n")
 
 
-AlsoLittleMoneyTheEvent = AlsoLittleMoney("Потерянный кошелёк",
-                                          "Вы нашли чей-то кошелёк.",
+AlsoLittleMoneyTheEvent = AlsoLittleMoney("Потерянный кошелёчек",
+                                          "Вы нашли чей-то кошелёчек.",
                                           "Получите 3 монет.")
 
 
@@ -963,8 +963,8 @@ class AnotherOneLittleMoney(RandomEvent):
                    + str(player.money) + "\n")
 
 
-AnotherOneLittleMoneyTheEvent = AnotherOneLittleMoney("Потерянный кошелёк",
-                                                      "Вы нашли чей-то кошелёк.",
+AnotherOneLittleMoneyTheEvent = AnotherOneLittleMoney("Две монеты",
+                                                      "Вы нашли на земле две монеты.",
                                                       "Получите 2 монеты.")
 
 allRandomEvents = [HeraldTheEvent, EvilWitchTheEvent, AlexTheEvent, JamesTheEvent, MargaretTheEvent,
