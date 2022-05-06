@@ -41,11 +41,15 @@ def stealACard(player):
     for card in victimPlayer.cards:
         if card.isArtefact() or card.isWeapon():
             cardsToSteal.append(card)
-    stolenCard = random.choice(cardsToSteal)
-    player.getCard(stolenCard, victimPlayer)
-    card.makePrivate()
-    logs.print(
-        "Карта " + stolenCard.name + " украдена Гильдией. Предыдущий владелец: " + victimPlayer.name + ".\n")
+    try:
+        stolenCard = random.choice(cardsToSteal)
+        player.getCard(stolenCard, victimPlayer)
+        stolenCard.makePrivate()
+        logs.print(
+            "Карта " + stolenCard.name + " украдена Гильдией. Предыдущий владелец: " + victimPlayer.name + ".\n")
+    except Exception:
+        logs.print(
+            "Гильдия попыталась обокрасть " + victimPlayer.name + ", но у этого игрока ничего нет.\n")
 
 # ФУНКЦИИ ГЕЙМПЛЕЯ - ВТОРОЙ ЭТАП ХОДА
 

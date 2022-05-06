@@ -255,17 +255,17 @@ class Player:
         logs.print("Финальные статы " + self.name)
         myStats.writeStats()
         # для победы нужно превзойти противника в двух статах из трёх
-        if myStats.force > enemyStats.force and myStats.magic > enemyStats.magic:
+        if myStats.force > tempEnemyStats.force and myStats.magic > tempEnemyStats.magic:
             return True
-        if myStats.force < enemyStats.force and myStats.magic < enemyStats.magic:
+        if myStats.force < tempEnemyStats.force and myStats.magic < tempEnemyStats.magic:
             return False
-        if myStats.force > enemyStats.force and myStats.mind > enemyStats.mind:
+        if myStats.force > tempEnemyStats.force and myStats.mind > tempEnemyStats.mind:
             return True
-        if myStats.force < enemyStats.force and myStats.mind < enemyStats.mind:
+        if myStats.force < tempEnemyStats.force and myStats.mind < tempEnemyStats.mind:
             return False
-        if myStats.magic > enemyStats.magic and myStats.mind > enemyStats.mind:
+        if myStats.magic > tempEnemyStats.magic and myStats.mind > tempEnemyStats.mind:
             return True
-        if myStats.magic < enemyStats.magic and myStats.mind < enemyStats.mind:
+        if myStats.magic < tempEnemyStats.magic and myStats.mind < tempEnemyStats.mind:
             return False
         # если условия не соблюдены - ничья. в данном случае считается за проигрыш
         return False
